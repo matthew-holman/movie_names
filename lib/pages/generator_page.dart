@@ -7,9 +7,9 @@ class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    var pair = appState.current;
+    var movieName = appState.current;
 
-    IconData icon = appState.favorites.contains(pair)
+    IconData icon = appState.favorites.contains(movieName)
         ? Icons.favorite
         : Icons.favorite_border;
 
@@ -17,7 +17,7 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BigCard(wordPair: pair),
+          BigCard(movieName: movieName),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,

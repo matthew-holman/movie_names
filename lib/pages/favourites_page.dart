@@ -8,13 +8,19 @@ class FavouritesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var favorites = appState.favorites;
     final theme = Theme.of(context);
+    final style = theme.textTheme.titleSmall!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
+    final listStyle = theme.textTheme.displaySmall!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
 
     return Scaffold(
-      appBar: AppBar(title: Text("Favorites")),
+      backgroundColor: theme.colorScheme.primaryContainer,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
-          color: theme.colorScheme.primaryContainer,
+          color: theme.colorScheme.primary,
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -26,7 +32,7 @@ class FavouritesPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 "No favorites yet!",
-                style: theme.textTheme.headlineSmall,
+                style: style,
               ),
             ),
           )
@@ -36,11 +42,11 @@ class FavouritesPage extends StatelessWidget {
               shrinkWrap: true,
               itemCount: favorites.length,
               itemBuilder: (context, index) {
-                final wordPair = favorites[index];
+                final movieName = favorites[index];
                 return ListTile(
                   title: Text(
-                    wordPair.asPascalCase,
-                    style: theme.textTheme.titleSmall,
+                    movieName,
+                    style: listStyle,
                   ),
                   leading: Icon(Icons.favorite, color: theme.colorScheme.primary),
                   trailing: IconButton(

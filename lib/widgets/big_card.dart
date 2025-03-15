@@ -4,10 +4,10 @@ import 'package:english_words/english_words.dart';
 class BigCard extends StatelessWidget {
   const BigCard({
     super.key,
-    required this.wordPair,
+    required this.movieName,
   });
 
-  final WordPair wordPair;
+  final String movieName;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class BigCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Text(
-          "${wordPair.first} ${wordPair.second}",
+          movieName,
           style: style,
         ),
       ),

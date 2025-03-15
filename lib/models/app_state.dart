@@ -1,12 +1,14 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+import 'movie_name_generator.dart';
+
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-  var favorites = <WordPair>[];
+  var current = MovieNameGenerator.generateMovieName();
+  var favorites = <String>[];
 
   void getNext() {
-    current = WordPair.random();
+    current = MovieNameGenerator.generateMovieName();
     notifyListeners();
   }
 
