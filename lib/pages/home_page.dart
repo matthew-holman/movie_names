@@ -16,10 +16,8 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (selectedIndex) {
       case 0:
         page = GeneratorPage();
-        break;
       case 1:
         page = FavouritesPage();
-        break;
       default:
         throw UnimplementedError('This page doesn\'t exist yet');
     }

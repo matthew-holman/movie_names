@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/app_state.dart';
-import '../widgets/big_card.dart';
 
 class FavouritesPage extends StatelessWidget {
   @override
@@ -15,7 +14,7 @@ class FavouritesPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
-          color: theme.colorScheme.primary,
+          color: theme.colorScheme.primaryContainer,
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
