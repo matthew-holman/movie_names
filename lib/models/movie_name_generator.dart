@@ -11,20 +11,36 @@ class MovieNameGenerator {
       '{definitive noun} {verb past tense}',
       'The {adjective} {noun} {verb past tense} {indefinite noun}',
       'The {adjective} {plural noun}',
-      '{verb past tense} {indefinite noun}',
+      'They {verb past tense} {indefinite noun}',
       '{adjective} {verb past tense} {noun}',
-      '{indefinite noun} {verb past tense} {adjective}'
+      'A {noun} {verb past tense} {adjective}',
+      '{verb past tense} {preposition} {noun}',
+      'The {noun} {preposition} {noun}',
+      'A {noun} {preposition} {adjective} {indefinite noun}',
+      '{adjective} {noun} {preposition} {indefinite noun}',
+      '{verb past tense} {preposition} {plural noun}',
+      '{adjective} {noun} {verb past tense} {preposition} {noun}',
     ];
 
     String structure = structures[_random.nextInt(structures.length)];
 
-    return structure
-        .replaceAll('{adjective}', _randomChoice(MovieWordLists.adjectives))
-        .replaceAll('{noun}', _randomChoice(MovieWordLists.nouns))
-        .replaceAll('{plural noun}', _randomChoice(MovieWordLists.pluralNouns))
-        .replaceAll('{verb past tense}', _randomChoice(MovieWordLists.verbsPastTense))
-        .replaceAll('{definitive noun}', 'The ${_randomChoice(MovieWordLists.nouns)}')
-        .replaceAll('{indefinite noun}', _indefiniteForm(_randomChoice(MovieWordLists.nouns)));
+    Map<String, List<String>> wordPool = {
+      '{preposition}': List.generate(3, (_) => _randomChoice(MovieWordLists.prepositions)),
+      '{adjective}': List.generate(3, (_) => _randomChoice(MovieWordLists.adjectives)),
+      '{noun}': List.generate(3, (_) => _randomChoice(MovieWordLists.nouns)),
+      '{plural noun}': List.generate(3, (_) => _randomChoice(MovieWordLists.pluralNouns)),
+      '{verb past tense}': List.generate(3, (_) => _randomChoice(MovieWordLists.verbsPastTense)),
+      '{definitive noun}': List.generate(3, (_) => 'The ${_randomChoice(MovieWordLists.nouns)}'),
+      '{indefinite noun}': List.generate(3, (_) => _indefiniteForm(_randomChoice(MovieWordLists.nouns))),
+    };
+
+    wordPool.forEach((key, values) {
+      while (structure.contains(key) && values.isNotEmpty) {
+        structure = structure.replaceFirst(key, values.removeAt(0));
+      }
+    });
+
+    return structure;
   }
 
   static String _randomChoice(List<String> list) {
