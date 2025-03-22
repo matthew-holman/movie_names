@@ -24,4 +24,4 @@ This Flutter app is based on the **[Google Codelab: Your First Flutter App](http
 ```  
 
 ## 🚀 Notes
-I'm just playing around with Flutter for the first time, no idea what is idiomatic Dart and or Flutter, this is not intended as an example of 
+I'm just playing around with Flutter for the first time, no idea what is idiomatic Dart and or Flutter, this is not intended as an good example.
